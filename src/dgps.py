@@ -21,7 +21,7 @@ class DistributionSampler:
             Compute the true pdf of the distribution at x.
     """
 
-    def __init__(self, dist_type, params):
+    def __init__(self, dist_type, params, seed = 1234):
         # Store distribution type (normalized to lowercase) and its parameters
         self.dist_type = dist_type.lower()
         self.params = params
@@ -36,6 +36,7 @@ class DistributionSampler:
             raise ValueError(f"Unknown distribution type: {self.dist_type}")
         # Initialize the pdf function based on type and params
         self.pdf = self.get_pdf()
+        np.random.seed(seed)
 
     def generate_samples(self, sample_size):
         """
