@@ -101,7 +101,7 @@ def multi_kde(h: float, data: np.ndarray, bandwidth_coef: np.ndarray, d: int = 2
     if n < 0:
         raise ValueError("data is empty")
     
-    from metrics import coef  # imported here to avoid circular import
+    from src.metrics import coef  # imported here to avoid circular import
 
     def density(y: float) -> float:
         # Compute coefficients for combining KDEs

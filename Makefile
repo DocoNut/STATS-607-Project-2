@@ -1,7 +1,6 @@
 VENV   := .venv
 PY     := $(VENV)/bin/python3
 PIP    := $(VENV)/bin/pip3
-CONFIG ?= src/config.json
 
 .PHONY: all simulate venv install clean test
 
@@ -15,10 +14,12 @@ install: venv
 	@test -f requirements.txt && $(PIP) -q install -r requirements.txt || true
 
 simulate: install
-	@$(PY) src/simulation.py --config $(CONFIG)
+	@$(PY) -m src.simulation
 
 test: install
-	@$(PY) tests/test.py
+	@$(PY) -m tests.function_test
+	@$(PY) -m tests.data_test
+	@$(PY) -m tests.reproducibility_test
 
 clean:
 	@rm results/raw/* results/figures/*

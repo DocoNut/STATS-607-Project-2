@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-data = pd.read_csv("data/processed/faithful.csv")
+data = pd.read_csv("data/simulated.csv")
 
 # 1. Non-empty
 if data.empty:
@@ -19,5 +19,5 @@ if not np.all([np.issubdtype(dtype, np.number) for dtype in data.dtypes]):
 if data.shape[1] != 1:
     raise ValueError(f"Expected 2 columns, got {data.shape[1]}")
 
-print("✅ Data passed all checks")
+print("✅ Data tests all passed!")
 

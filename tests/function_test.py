@@ -1,4 +1,4 @@
-from src import dgps, methods, metrics
+from src  import dgps, methods, metrics
 import pytest
 import numpy as np
 
@@ -21,4 +21,4 @@ with pytest.raises(TypeError, match='number'):
 with pytest.raises(ValueError, match ='bandwidth'):
     methods.adaptive_kde(-1,np.array([1,2,3]))
 
-print("All tests passed!")
+print("✅ Function tests all passed!")

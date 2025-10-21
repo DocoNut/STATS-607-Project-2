@@ -2,8 +2,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import json
-from dgps import DistributionSampler
-from methods import kde,multi_kde_n0 as multi_kde, adaptive_kde, plugin_kde
+from src.dgps import DistributionSampler
+from src.methods import kde,multi_kde_n0 as multi_kde, adaptive_kde, plugin_kde
 from tqdm.auto import tqdm
 
 def main():
@@ -26,7 +26,8 @@ def main():
         sampler = DistributionSampler(dist,params,seed=seed)
 
         # generate data and true pdf
-        data = sampler.generate_samples(N) 
+        data = sampler.generate_samples(N)
+        pd.DataFrame(data).to_csv('data/simulated.csv',index=False)
         f = sampler.get_pdf()
             
         # several estimated pdf  
